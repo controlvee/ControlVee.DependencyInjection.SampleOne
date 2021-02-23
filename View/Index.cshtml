@@ -1,0 +1,29 @@
+﻿@using Microsoft.Extensions.Logging;
+@using WebAPIandJquery;
+ 
+@inject ITransient _theTransient;
+@inject ISingleton _theSingleton;
+@inject IScoped _theScoped;
+@inject ILogger<Test> _theLogger;
+
+@{
+    _theLogger.LogDebug("The view now has me 1/2");
+}
+
+<div>
+    This is the data that was injected into the controller <br />
+</div>
+<p>Singleton: @ViewBag.Single</p>
+<p>Scoped: @ViewBag.Scoped</p>
+<p>Transient: @ViewBag.Transient</p>
+
+<div>
+    This is the data that was injected into the view <br />
+</div>
+<p>Singleton: @_theTransient.Data</p>
+<p>Scoped: @_theSingleton.Data</p>
+<p>Transient: @_theScoped.Data</p>
+
+@{
+    _theLogger.LogDebug("The view now has me 1/2");
+}
